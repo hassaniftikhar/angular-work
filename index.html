@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <title>Angular Demo</title>
@@ -12,8 +12,29 @@
 <body>
 
 <div class="main" ng-controller="MyController">
+  <div class="search">
+    <h1>Artist Directory</h1>
+    <label>search: </label>
+    <input ng-model="query" placeholder="search for artists" autofocus></label>
+    <label class="formgroup">
+      <select ng-model="artistOrder">
+        <option value="name">Name</option>
+        <option value="reknown">reknown</option>
+      </select>
+    </label>
+
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" name="direction" checked>
+      ascending
+    </label>
+
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" name="direction" value="reverse">
+      descending
+    </label>
+  </div>
   <ul class="artistlist">
-    <li class="artist cf" ng-repeat="artist in artists" ng-if="artist.sex == 'male'">
+    <li class="artist cf" ng-repeat="artist in artists | filter: query | orderBy: artistOrder:direction" ng-if="artist.sex=='male'">
 
       <img ng-src="images/{{artist.shortname}}_tn.jpg" alt="Photo of {{artist.name}}">
       <div class="info">
