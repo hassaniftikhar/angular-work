@@ -20,7 +20,7 @@
       descending
     </label>
   </div>
-  <ul class="artistlist">
+  <ul class="artistlist" ng-show="query">
     <li class="artist cf" ng-repeat="artist in artists | filter: query | orderBy: artistOrder:direction" ng-if="artist.sex=='male'">
 
       <a href="#/details/{{artists.indexOf(artist)}}">
