@@ -11,6 +11,23 @@ artistController.controller('DetailsController', ['$scope', '$http', '$routePara
   $http.get('js/data.json').success(function (data) {
     $scope.artists = data;
     $scope.whichItem = $routeParams.itemId;
+
+    if($routeParams.itemId > 0){
+      console.log(1);
+      $scope.prevItem = Number($routeParams.itemId) - 1;
+    } else {
+      console.log(2);
+      $scope.prevItem = $scope.artists.length - 1;
+    }
+
+    if($routeParams.itemId < ($scope.artists.length - 1)){
+      console.log(3);
+      $scope.nextItem = Number($routeParams.itemId) + 1;
+    } else {
+      console.log(4);
+      $scope.nextItem = 0;
+    }
+
   });
 }]);
 
