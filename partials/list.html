@@ -23,11 +23,13 @@
   <ul class="artistlist">
     <li class="artist cf" ng-repeat="artist in artists | filter: query | orderBy: artistOrder:direction" ng-if="artist.sex=='male'">
 
-      <img ng-src="images/{{artist.shortname}}_tn.jpg" alt="Photo of {{artist.name}}">
-      <div class="info">
-        <h2>{{artist.name}}</h2>
-        <h3>{{artist.reknown}}</h3>
-      </div>
+      <a href="#/details/{{artists.indexOf(artist)}}">
+        <img ng-src="images/{{artist.shortname}}_tn.jpg" alt="Photo of {{artist.name}}">
+        <div class="info">
+          <h2>{{artist.name}}</h2>
+          <h3>{{artist.reknown}}</h3>
+        </div>
+      </a>
 
     </li>
   </ul>
